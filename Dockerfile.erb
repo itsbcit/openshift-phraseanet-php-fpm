@@ -1,12 +1,4 @@
-FROM busybox
+FROM bcit/openshift-php-fpm:<%= image.labels['php_version'] %>
 
-<%= snippet('labels', binding) -%>
-
-<%= snippet('docker-entrypoint', binding) -%>
-
-<%= snippet('dockerize', binding) -%>
-
-<%= snippet('tini', binding) -%>
-
-ENTRYPOINT ["/tini", "--", "/docker-entrypoint.sh"]
-CMD [ "init-loop" ]
+RUN apk add --no-cache \
+    exiftool
