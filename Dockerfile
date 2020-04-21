@@ -50,6 +50,34 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         ffmpeg \
         gpac
 
+RUN mkdir -p /application \
+ && chown 0:0 /application \
+ && chmod 775 /application
+
+RUN sed -i "s/^error_log.*/error_log = \/proc\/self\/fd\/2/" /etc/php-fpm.conf \
+ && sed -i "s/^session.cache_limiter.*/session.cache_limiter =/" /etc/php.ini \
+ && sed -i "s/^session.hash_bits_per_character.*/session.hash_bits_per_character = 6/" /etc/php.ini \
+ && sed -i "s/^session.hash_function.*/session.hash_function = 1/" /etc/php.ini \
+ && sed -i "s/^;session.cookie_secure.*/session.cookie_secure = 1/" /etc/php.ini \
+ && chown -R 0:0 \
+        /etc/php-fpm.conf \
+        /etc/php-fpm.d \
+        /etc/php.d \
+        /etc/php.ini \
+ && chmod 644 \
+        /etc/php-fpm.conf \
+        /etc/php.ini \
+ && chmod 0775 \
+        /etc/php-fpm.d \
+        /etc/php.d \
+ && find \
+        /etc/php-fpm.d \
+        /etc/php.d \
+        -type f -exec chmod 664 {} \;
+
+RUN mkdir -p /run/php-fpm \
+ && chown 0:0 /run/php-fpm \
+ && chmod 1777 /run/php-fpm
 
 COPY 50-copy-config.sh           /docker-entrypoint.d/
 COPY 55-php.ini-date.timezone.sh /docker-entrypoint.d/
