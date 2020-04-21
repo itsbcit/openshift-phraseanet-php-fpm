@@ -45,6 +45,7 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
 
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
     http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm \
+ && rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-nux.ro \
  && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         ffmpeg \
         gpac
