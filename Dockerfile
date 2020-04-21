@@ -12,6 +12,7 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
  && yum-config-manager --enable remi-php70 \
  && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
     file \
+    less \
     perl-Image-ExifTool \
     php-fpm \
     php-cli \
