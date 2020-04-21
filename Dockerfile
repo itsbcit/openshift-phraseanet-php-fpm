@@ -35,6 +35,10 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
     php-mysqlnd \
     php-gmp \
     php-opcache \
+    php-pecl-gmagick \
+    php-pecl-redis \
+    php-pecl-zip \
+    php-pecl-zmq \
     unoconv \
     xpdf
 
