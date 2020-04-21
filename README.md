@@ -1,2 +1,2 @@
-# docker-template
-Template for new BCIT Docker image repositories
+# openshift-phraseanet-php-fpm
+`php-fpm` container for running Phraseanet in OpenShift
