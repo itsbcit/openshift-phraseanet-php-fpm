@@ -58,4 +58,4 @@ COPY 55-php.ini-date.timezone.sh /docker-entrypoint.d/
 
 WORKDIR /application
 EXPOSE 9000
-CMD ["/usr/sbin/php-fpm7", "-F", "-O", "-y", "/etc/php7/php-fpm.conf"]
+CMD ["/usr/sbin/php-fpm", "-F", "-O", "-y", "/etc/php-fpm.conf"]

@@ -52,3 +52,7 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
 
 COPY 50-copy-config.sh           /docker-entrypoint.d/
 COPY 55-php.ini-date.timezone.sh /docker-entrypoint.d/
+
+WORKDIR /application
+EXPOSE 9000
+CMD ["/usr/sbin/php-fpm", "-F", "-O", "-y", "/etc/php-fpm.conf"]
