@@ -1,10 +1,11 @@
 FROM bcit/centos:7
 ENV TZ America/Vancouver
 ENV HOME /application
+ENV RUNUSER phraseanet
 
 LABEL centos_version="7"
 LABEL php_version="7.0"
-LABEL build_id="1587503061"
+LABEL build_id="1587504981"
 
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \

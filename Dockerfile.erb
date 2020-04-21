@@ -1,6 +1,7 @@
 FROM bcit/centos:<%= image.labels['centos_version'] %>
 ENV TZ America/Vancouver
 ENV HOME /application
+ENV RUNUSER phraseanet
 
 <%= snippet('labels', binding) -%>
 
