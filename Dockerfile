@@ -1,5 +1,5 @@
 FROM bcit/centos:7
-
+ENV TZ America/Vancouver
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
@@ -38,3 +38,7 @@ RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
  && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         ffmpeg \
         gpac
+
+
+COPY 50-copy-config.sh           /docker-entrypoint.d/
+COPY 55-php.ini-date.timezone.sh /docker-entrypoint.d/
