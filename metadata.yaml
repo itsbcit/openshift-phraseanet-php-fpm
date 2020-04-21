@@ -3,4 +3,4 @@ image_name: openshift-phraseanet-php-fpm
 org_name: bcit
 labels:
   centos_version: '7'
-  php_version: '7.4.5'
+  php_version: '7.0'
