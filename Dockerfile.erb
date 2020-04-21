@@ -1,4 +1,50 @@
-FROM bcit/openshift-php-fpm:<%= image.labels['php_version'] %>
+FROM bcit/centos:<%= image.labels['centos_version'] %>
 
-RUN apk add --no-cache \
-    exiftool
+RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
+        epel-release \
+        http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
+ && yum-config-manager \
+        --enable remi-php74 \
+ && rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-* \
+ && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
+    file \
+    perl-Image-ExifTool \
+    php-fpm \
+    php-cli \
+    php-xml \
+    php-gd \
+    php-odbc \
+    php-intl \
+    php-bcmath \
+    php-ldap \
+    php-soap \
+    php-common \
+    php-xmlrpc \
+    php-dba \
+    php-enchant \
+    php-dbg \
+    php-json \
+    php-mbstring \
+    php-process \
+    php-pdo \
+    php-recode \
+    php-mysqlnd \
+    php-gmp \
+    php-opcache \
+    unoconv \
+    xpdf
+
+RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
+    http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm \
+ && rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-nux.ro \
+ && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
+        ffmpeg \
+        gpac
+
+RUN mkdir -p /application \
+ && chown 0:0 /application \
+ && chmod 775 /application
+
+WORKDIR /application
+EXPOSE 9000
+CMD ["/usr/sbin/php-fpm7", "-F", "-O", "-y", "/etc/php7/php-fpm.conf"]

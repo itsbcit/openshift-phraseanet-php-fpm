@@ -2,4 +2,5 @@
 image_name: openshift-phraseanet-php-fpm
 org_name: bcit
 labels:
-  php_version: '7.3.14'
+  centos_version: '7'
+  php_version: '7.4.5'
