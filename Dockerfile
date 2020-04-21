@@ -9,8 +9,7 @@ LABEL build_id="1587502820"
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
- && yum-config-manager \
-        --enable remi-php74 \
+ && yum-config-manager --enable remi-php70 \
  && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
     file \
     perl-Image-ExifTool \
