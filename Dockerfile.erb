@@ -79,6 +79,7 @@ RUN mkdir -p /run/php-fpm \
 
 COPY 50-copy-config.sh           /docker-entrypoint.d/
 COPY 55-php.ini-date.timezone.sh /docker-entrypoint.d/
+COPY www.conf /etc/php-fpm.d/www.conf
 
 WORKDIR /application
 EXPOSE 9000
