@@ -1,5 +1,11 @@
 FROM bcit/centos:7
 ENV TZ America/Vancouver
+ENV HOME /application
+
+LABEL centos_version="7"
+LABEL php_version="7.0"
+LABEL build_id="1587502820"
+
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
