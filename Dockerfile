@@ -4,7 +4,7 @@ ENV HOME /application
 
 LABEL centos_version="7"
 LABEL php_version="7.0"
-LABEL build_id="1587502820"
+LABEL build_id="1587503061"
 
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \
