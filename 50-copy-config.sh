@@ -9,7 +9,7 @@ destfilename() {
 }
 
 if [ -d $config_path ]; then
-    for f in $(find ${config_path} -maxdepth 1 -type f -name '*.conf' -o -name '*.ini');do
+    for f in $(find -L ${config_path} -maxdepth 1 -type f -name '*.conf' -o -name '*.ini');do
         case $(basename $f) in
             php.d-*)
                 [ -d $dest_path/php.d ] || mkdir -pv $dest_path/php.d
