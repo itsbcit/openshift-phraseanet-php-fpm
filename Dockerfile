@@ -5,13 +5,14 @@ ENV RUNUSER phraseanet
 
 LABEL centos_version="7"
 LABEL php_version="7.0"
-LABEL build_id="1587504981"
+LABEL build_id="1587598422"
 
 RUN yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
         epel-release \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
  && yum-config-manager --enable remi-php70 \
  && yum -y --setopt tsflags=nodocs --setopt timeout=5 install \
+    ImageMagick \
     file \
     less \
     perl-Image-ExifTool \
